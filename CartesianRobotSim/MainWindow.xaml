@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CartesianRobotSim"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Cartesian Robot Simulation" Height="900" Width="1600"
+        ResizeMode="CanResizeWithGrip">
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        
+        
+       <!--<StackPanel Orientation="Horizontal"
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        </StackPanel>-->
     </Grid>
 </Window>
