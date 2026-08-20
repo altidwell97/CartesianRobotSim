@@ -16,7 +16,7 @@ namespace CartesianRobotSim.MVVM.View
     /// <summary>
     /// Interaction logic for _3DEnvironment.xaml
     /// </summary>
-    public partial class _3DEnvironment : UserControl
+    public partial class _3DEnvironment : Page
     {
         public _3DEnvironment()
         {
