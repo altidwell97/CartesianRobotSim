@@ -6,150 +6,88 @@
              xmlns:local="clr-namespace:CartesianRobotSim.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="533">
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Background="White"
+                Height="200"
+                Width="400"
+                MaxHeight="300"
+                MaxWidth="533">
 
-        <!--Forward-->
-        <Button Grid.Row="0" Grid.Column="1" 
-                Content="▲" FontSize="20" 
-                Click="Forward_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" 
-                   Text="CM" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                   Margin="80,0,0,10"/>
-        <!--ForwardDistance-->
-        <TextBox Grid.Row="0" Grid.Column="1" 
-                 Text="{Binding PlusYDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" 
-                   Text="+Y" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   Margin="0,10,0,0"/>
+        <StackPanel VerticalAlignment="Center" 
+                    Margin="50 0 0 0">
+            <!-- +Z -->
+            <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="+Z" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" 
+                       Margin="0,10,0,0"/>
+            <Button Grid.Row="0" Grid.Column="0" 
+                    Content="▲" FontSize="20" 
+                    Click="Up_Click"
+                    Height="40" Width="40"
+                    Margin="0 0 0 50"/>
 
-        <!--Backward-->
-        <Button Grid.Row="2" Grid.Column="1" 
-                Content="▼" FontSize="20" 
-                Click="Backward_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" 
-                Text="CM" FontSize="12" 
-                Background="White" 
-                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                Margin="80,0,0,10"/>
-        <!--BackwardDistance-->
-        <TextBox Grid.Row="2" Grid.Column="1" 
-                 Text="{Binding MinusYDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" 
-                   Text="-Y" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   Margin="0,10,0,0"/>
+            <!-- -Z -->
+            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="-Z" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Button Grid.Row="2" Grid.Column="0" 
+                    Content="▼" FontSize="20" 
+                    Click="Down_Click"
+                    Height="40" Width="40"/>
+        </StackPanel>
 
-        <!--Right-->
-        <Button Grid.Row="1" Grid.Column="2" 
-                Content="▶" FontSize="20" 
-                Click="Right_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" 
-                   Text="CM" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                   Margin="80,0,0,10"/>
-        <!--RightDistance-->
-        <TextBox Grid.Row="1" Grid.Column="2" 
-                 Text="{Binding PlusXDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" 
-                    Text="+X" FontSize="12" 
-                    Background="White" 
-                    HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Margin="0,10,0,0"/>
+        <StackPanel VerticalAlignment="Center"
+                    Margin="50 0 0 0">
+            <!-- -X -->
+            <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="-X" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center"/>
+            <Button Grid.Row="1" Grid.Column="0" 
+                    Content="◀" FontSize="20" 
+                    Click="Left_Click"
+                    Height="40" Width="40"/>
+        </StackPanel>
 
-        <!--Left-->
-        <Button Grid.Row="1" Grid.Column="0" 
-                Content="◀" FontSize="20" 
-                Click="Left_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="1" Grid.Column="0" 
-                   Text="CM" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                   Margin="80,0,0,10"/>
-        <!--LeftDistance-->
-        <TextBox Grid.Row="1" Grid.Column="0" 
-                 Text="{Binding MinusXDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/> 
-        <TextBlock Grid.Row="1" Grid.Column="0" 
-                   Text="-X" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   Margin="0,10,0,0"/>
+        <StackPanel VerticalAlignment="Center" 
+                    Margin="50 0 0 0">
+            <!-- +Y -->
+            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       Text="+Y" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center"/>
+            <Button Grid.Row="0" Grid.Column="1" 
+                    Content="▲" FontSize="20" 
+                    Click="Forward_Click"
+                    Height="40" Width="40"
+                    Margin="0 0 0 50"/>
 
-        <!--Up-->
-        <Button Grid.Row="0" Grid.Column="0" 
-                Content="▲" FontSize="20" 
-                Click="Up_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="0" Grid.Column="0" 
-                    Text="CM" FontSize="12" 
-                    Background="White" 
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                    Margin="80,0,0,10"/>
-        <!--UpDistance-->
-        <TextBox Grid.Row="0" Grid.Column="0"
-                 Text="{Binding PlusZDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="0" Grid.Column="0" 
-                    Text="+Z" FontSize="12" 
-                    Background="White" 
-                    HorizontalAlignment="Center" VerticalAlignment="Top" 
-                     Margin="0,10,0,0"/>
-        
+            <!-- -Y -->
+            <TextBlock Grid.Row="2" Grid.Column="1" 
+                       Text="-Y" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center"/>
+            <Button Grid.Row="2" Grid.Column="1" 
+                    Content="▼" FontSize="20" 
+                    Click="Backward_Click"
+                    Height="40" Width="40"/>
+            
+        </StackPanel>
 
-        <!--Down-->
-        <Button Grid.Row="2" Grid.Column="0" 
-                Content="▼" FontSize="20" 
-                Click="Down_Click"
-                Height="40" Width="40"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" 
-                   Text="CM" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                   Margin="80,0,0,10"/>
-        <!--DownDistance-->
-        <TextBox Grid.Row="2" Grid.Column="0" 
-                 Text="{Binding MinusZDistance}" FontSize="12" 
-                 Foreground="White" 
-                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-                 Width="50" Margin="0,0,0,10"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" 
-                   Text="-Z" FontSize="12" 
-                   Background="White" 
-                   HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   Margin="0,10,0,0"/>
-
-    </Grid>
+        <StackPanel VerticalAlignment="Center"
+                    Margin="50 0 0 0">
+            <!-- +X -->
+            <TextBlock Grid.Row="1" Grid.Column="2" 
+                       Text="+X" FontSize="12" 
+                       Background="White" 
+                       HorizontalAlignment="Center"/>
+            <Button Grid.Row="1" Grid.Column="2" 
+                    Content="▶" FontSize="20" 
+                    Click="Right_Click"
+                    Height="40" Width="40"/>
+        </StackPanel>
+    </StackPanel>
 </UserControl>
