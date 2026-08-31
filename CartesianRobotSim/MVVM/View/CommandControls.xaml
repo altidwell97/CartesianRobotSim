@@ -27,29 +27,25 @@
                    FontWeight="Bold" 
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
-        <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding XDistance}" FontSize="16"
-                 Width="100" Height="25"
-                 />
-        <TextBlock Grid.Row="0" Grid.Column="2" 
-                   Text="CM" FontSize="16" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Margin="10,0,0,0"/>
-        
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Text="{Binding XDistance}"
+                 FontSize="16"
+                 Width="100"
+                 Height="25" />
+
         <!--Y-Distance-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
                    Text="Y" FontSize="16" 
                    FontWeight="Bold" 
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 Text="{Binding YDistance}" FontSize="16"
-                 Width="100" Height="25"
-                 />
-        <TextBlock Grid.Row="1" Grid.Column="2" 
-                   Text="CM" FontSize="16" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Margin="10,0,0,0"/>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding YDistance}"
+                 FontSize="16"
+                 Width="100"
+                 Height="25" />
 
         <!--Z-Distance-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
@@ -57,15 +53,13 @@
                    FontWeight="Bold" 
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
-        <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding ZDistance}" FontSize="16"
-                 Width="100" Height="25"
-                 />
-        <TextBlock Grid.Row="2" Grid.Column="2" 
-                   Text="CM" FontSize="16" 
-                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Margin="10,0,0,0"/>
-        
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Text="{Binding ZDistance}"
+                 FontSize="16"
+                 Width="100"
+                 Height="25" />
+
         <!--Move Button-->
         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                 Content="Move" FontSize="16" 
