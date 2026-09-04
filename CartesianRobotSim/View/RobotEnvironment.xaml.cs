@@ -16,7 +16,7 @@ namespace CartesianRobotSim.View
     /// <summary>
     /// Interaction logic for RobotEnvironment.xaml
     /// </summary>
-    public partial class RobotEnvironment : Page
+    public partial class RobotEnvironment : UserControl
     {
         public RobotEnvironment()
         {

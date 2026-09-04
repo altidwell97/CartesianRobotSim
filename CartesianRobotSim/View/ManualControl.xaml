@@ -16,77 +16,71 @@
 
         <StackPanel VerticalAlignment="Center" 
                     Margin="50 0 0 0">
-            <!-- +Z -->
+            <!-- +Y -->
             <TextBlock Grid.Row="0" Grid.Column="0" 
-                       Text="+Z" FontSize="12" 
-                       Background="White" 
-                       HorizontalAlignment="Center" VerticalAlignment="Top" 
-                       Margin="0,10,0,0"/>
+                       Text="+Y"
+                       HorizontalAlignment="Center"
+                       />
             <Button Grid.Row="0" Grid.Column="0" 
-                    Content="▲" 
+                    Content="▲"
+                    Command="{Binding PlusYCommand}"
                     Style="{StaticResource DirectionalButton}"
-                    Click="Up_Click"
                     Margin="0 0 0 50"/>
 
-            <!-- -Z -->
+            <!-- -Y -->
             <TextBlock Grid.Row="2" Grid.Column="0" 
-                       Text="-Z" FontSize="12" 
-                       Background="White" 
-                       HorizontalAlignment="Center" VerticalAlignment="Top" />
+                       Text="-Y"
+                       HorizontalAlignment="Center"/>
             <Button Grid.Row="2" Grid.Column="0" 
                     Content="▼"  
-                    Click="Down_Click"
+                    Command="{Binding MinusYCommand}"
                     Style="{StaticResource DirectionalButton}" />
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
-            <!-- -X -->
+            <!-- -Z -->
             <TextBlock Grid.Row="1" Grid.Column="0" 
-                       Text="-X" FontSize="12" 
-                       Background="White" 
+                       Text="-Z"
                        HorizontalAlignment="Center"/>
             <Button Grid.Row="1" Grid.Column="0" 
                     Content="◀" 
-                    Click="Left_Click"
+                    Command="{Binding MinusZCommand}"
                     Style="{StaticResource DirectionalButton}"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" 
                     Margin="50 0 0 0">
-            <!-- +Y -->
+            <!-- +X -->
             <TextBlock Grid.Row="0" Grid.Column="1" 
-                       Text="+Y" FontSize="12" 
-                       Background="White" 
+                       Text="+X"
                        HorizontalAlignment="Center"/>
             <Button Grid.Row="0" Grid.Column="1" 
                     Content="▲"
-                    Click="Forward_Click"
-                    Margin="0 0 0 50"
-                    Style="{StaticResource DirectionalButton}"/>
+                    Command="{Binding PlusXCommand}"
+                    Style="{StaticResource DirectionalButton}"
+                    Margin="0 0 0 50"/>
 
-            <!-- -Y -->
+            <!-- -X -->
             <TextBlock Grid.Row="2" Grid.Column="1" 
-                       Text="-Y" FontSize="12" 
-                       Background="White" 
+                       Text="-X"
                        HorizontalAlignment="Center"/>
             <Button Grid.Row="2" Grid.Column="1" 
                     Content="▼"
-                    Click="Backward_Click"
+                    Command="{Binding MinusXCommand}"
                     Style="{StaticResource DirectionalButton}"/>
             
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
-            <!-- +X -->
+            <!-- +Z -->
             <TextBlock Grid.Row="1" Grid.Column="2" 
-                       Text="+X" FontSize="12" 
-                       Background="White" 
+                       Text="+Z"
                        HorizontalAlignment="Center"/>
             <Button Grid.Row="1" Grid.Column="2" 
                     Content="▶"
-                    Click="Right_Click"
+                    Command="{Binding PlusZCommand}"
                     Style="{StaticResource DirectionalButton}" />
         </StackPanel>
     </StackPanel>

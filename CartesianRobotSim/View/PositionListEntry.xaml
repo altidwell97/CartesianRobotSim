@@ -23,50 +23,46 @@
 
         <!--X-Point-->
         <TextBlock Grid.Row="0" Grid.Column="0" 
-                   Text="X" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="X" 
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding XPosition}"/>
+                 Text="{Binding XValue, UpdateSourceTrigger=PropertyChanged}"/>
 
         <!--Y-Point-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
-                   Text="Y" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="Y"  
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="1" Grid.Column="1"
-                 Text="{Binding YPosition}" />
+                 Text="{Binding YValue, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--Z-Point-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
-                   Text="Z" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="Z" 
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding ZPosition}" />
+                 Text="{Binding ZValue, UpdateSourceTrigger=PropertyChanged}" />
 
         <!--AddButton-->
         <Button Grid.Row="3" Grid.Column="0"
                 Content="Add"
                 Style="{StaticResource Button}"
-                Click="Add_Click"
+                Command="{Binding AddCommand}"
+                Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <!--RemoveButton-->
         <Button Grid.Row="3" Grid.Column="1"
                 Content="Remove"
                 Style="{StaticResource Button}"
-                Click="Remove_Click"
+                Command="{Binding RemoveCommand}"
+                Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <!--SaveButton-->
         <Button Grid.Row="3" Grid.Column="2"
                 Content="Save"
                 Style="{StaticResource Button}"
-                Click="Save_Click"
+                Command="{Binding SaveCommand}"
                 Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 

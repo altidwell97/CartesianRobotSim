@@ -52,7 +52,7 @@
         <!-- Position List Entry -->
         <DockPanel Grid.Row="2"
                    Grid.Column="2">
-            <views:PositionListEntry />
+            <views:MemorizedPositions />
         </DockPanel>
 
 

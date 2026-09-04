@@ -7,21 +7,46 @@
              mc:Ignorable="d" 
              d:DesignHeight="297" d:DesignWidth="528">
     <Grid Background="White">
+        <TextBlock Text="Memorized Positions" 
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 10"/>
         <!-- Memorized Positions List -->
-        <ListBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
-                 ItemsSource="{Binding MemorizedPositions}" 
-                 SelectedItem="{Binding SelectedPosition, Mode=TwoWay}"
-                 DisplayMemberPath="Name"
-                 Height="225" Width="1000"
-                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                 <!--ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 ScrollViewer.HorizontalScrollBarVisibility="Auto"-->
-        
+        <ListView ItemsSource="{Binding MemorizedPositions}"
+                  SelectedItem="{Binding SelectedPosition, Mode=TwoWay}"
+                  DisplayMemberPath="Name"
+                  Height="225"
+                  Width="500"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="0 0 0 10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Point 1"
+                                    DisplayMemberBinding="{Binding Name}"
+                                    Width="100" />
+                    <GridViewColumn Header="Point 2"
+                                    DisplayMemberBinding="{Binding X}"
+                                    Width="100" />
+                    <GridViewColumn Header="Point 3"
+                                    DisplayMemberBinding="{Binding Y}"
+                                    Width="100" />
+                    <GridViewColumn Header="Point 4"
+                                    DisplayMemberBinding="{Binding Z}"
+                                    Width="100" />
+                    <GridViewColumn Header="Point 5"
+                                    DisplayMemberBinding="{Binding Z}"
+                                    Width="100" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <!--Run Button-->
         <Button Content="Run"
-                Click="Run_Click"
+                Command="{Binding RunCommand}"
                 Style="{StaticResource Button}"
-                HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Margin="0 0 0 5"/>
         
     </Grid>
 </UserControl>

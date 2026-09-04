@@ -1,4 +1,5 @@
-﻿<Page x:Class="CartesianRobotSim.View.RobotEnvironment"
+﻿<UserControl x:Class="CartesianRobotSim.View.RobotEnvironment"
+      x:Name="Root"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +7,7 @@
       xmlns:local="clr-namespace:CartesianRobotSim.View"
       xmlns:helix="http://helix-toolkit.org/wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="594" d:DesignWidth="1056"
-      Title="RobotEnvironment">
+      d:DesignHeight="594" d:DesignWidth="1056">
 
     <Grid>
         <helix:HelixViewport3D x:Name="viewport"
@@ -46,11 +46,11 @@
                                   Fill="Orange">
                 <helix:SphereVisual3D.Transform>
                     <TranslateTransform3D x:Name="PointerTransform"
-                                          OffsetX="1"
-                                          OffsetY="1"
-                                          OffsetZ="1" />
+                                          OffsetX="{Binding PointerX, ElementName=Root, Mode=TwoWay}"
+                                          OffsetY="{Binding PointerY, ElementName=Root, Mode=TwoWay}"
+                                          OffsetZ="{Binding PointerZ, ElementName=Root, Mode=TwoWay}" />
                 </helix:SphereVisual3D.Transform>
             </helix:SphereVisual3D>
         </helix:HelixViewport3D>
     </Grid>
-</Page>
+</UserControl>

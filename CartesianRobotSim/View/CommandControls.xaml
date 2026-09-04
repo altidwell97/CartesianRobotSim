@@ -23,30 +23,24 @@
         
         <!--X-Distace-->
         <TextBlock Grid.Row="0" Grid.Column="0" 
-                   Text="X" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="X"  
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="0"
                  Grid.Column="1"
                  Text="{Binding XDistance}" />
 
         <!--Y-Distance-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
-                   Text="Y" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="Y" 
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="1"
                  Grid.Column="1"
                  Text="{Binding YDistance}" />
 
         <!--Z-Distance-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
-                   Text="Z" FontSize="16" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                   Margin="0,0,0,0"/>
+                   Text="Z" 
+                   HorizontalAlignment="Right"/>
         <TextBox Grid.Row="2"
                  Grid.Column="1"
                  Text="{Binding ZDistance}" />
@@ -55,7 +49,7 @@
         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                 Content="Move"
                 Style="{StaticResource Button}"
-                Click="Move_Click"
+                Command="{Binding MoveCommand}"
                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>
