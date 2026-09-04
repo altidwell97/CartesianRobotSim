@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CartesianRobotSim"
+        xmlns:views="clr-namespace:CartesianRobotSim.View"
         mc:Ignorable="d"
-        Title="Cartesian Robot Simulation" Height="900" Width="1600"
+        Title="Cartesian Robot Simulation" Height="891" Width="1584"
         ResizeMode="CanResizeWithGrip">
 
     <Grid>
@@ -21,9 +22,41 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        
-        
-       <!--<StackPanel Orientation="Horizontal"
+        <!-- Robot Environment -->
+        <DockPanel Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Grid.RowSpan="2">
+            <views:RobotEnvironment />
+        </DockPanel>
+
+        <!-- Position List Entry -->
+        <DockPanel Grid.Row="0"
+                   Grid.Column="2"
+                   Grid.RowSpan="2">
+            <views:PositionListEntry />
+        </DockPanel>
+
+        <!-- Manual Controls -->
+        <DockPanel Grid.Row="2"
+                   Grid.Column="0">
+            <views:ManualControl />
+        </DockPanel>
+
+        <!-- Command Controls -->
+        <DockPanel Grid.Row="2"
+                   Grid.Column="1">
+            <views:CommandControls />
+        </DockPanel>
+
+        <!-- Position List Entry -->
+        <DockPanel Grid.Row="2"
+                   Grid.Column="2">
+            <views:PositionListEntry />
+        </DockPanel>
+
+
+        <!--<StackPanel Orientation="Horizontal"
                     Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
         </StackPanel>-->
     </Grid>

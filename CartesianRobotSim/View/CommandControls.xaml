@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="CartesianRobotSim.MVVM.View.CommandControls"
+﻿<UserControl x:Class="CartesianRobotSim.View.CommandControls"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CartesianRobotSim.MVVM.View"
+             xmlns:local="clr-namespace:CartesianRobotSim.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="533">
+             d:DesignHeight="297" d:DesignWidth="528">
     <Grid Background="White">
 
         <Grid.ColumnDefinitions>
@@ -29,10 +29,7 @@
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="0"
                  Grid.Column="1"
-                 Text="{Binding XDistance}"
-                 FontSize="16"
-                 Width="100"
-                 Height="25" />
+                 Text="{Binding XDistance}" />
 
         <!--Y-Distance-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
@@ -42,10 +39,7 @@
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="1"
                  Grid.Column="1"
-                 Text="{Binding YDistance}"
-                 FontSize="16"
-                 Width="100"
-                 Height="25" />
+                 Text="{Binding YDistance}" />
 
         <!--Z-Distance-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
@@ -55,16 +49,13 @@
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="2"
                  Grid.Column="1"
-                 Text="{Binding ZDistance}"
-                 FontSize="16"
-                 Width="100"
-                 Height="25" />
+                 Text="{Binding ZDistance}" />
 
         <!--Move Button-->
         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
-                Content="Move" FontSize="16" 
+                Content="Move"
+                Style="{StaticResource Button}"
                 Click="Move_Click"
-                Height="40" Width="100"
                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>

@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CartesianRobotSim.MVVM.View
+namespace CartesianRobotSim.View
 {
     /// <summary>
     /// Interaction logic for CommandControls.xaml

@@ -8,10 +8,29 @@
                TargetType="Button">
             <Setter Property="FontSize"
                     Value="20" />
-            <Setter Property="Width" 
+            <Setter Property="Width"
                     Value="40" />
             <Setter Property="Height"
                     Value="40" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Width"
+                    Value="100" />
+            <Setter Property="Height"
+                    Value="25" />
+        </Style>
+        <Style x:Key="Button"
+            TargetType="Button">
+            <Setter Property="FontSize"
+                    Value="16" />
+            <Setter Property="Width"
+                    Value="100" />
+            <Setter Property="Height"
+                    Value="40" />
+            <Setter Property="Margin"
+                    Value="0 10 0 10" />
         </Style>
     </Application.Resources>
 </Application>

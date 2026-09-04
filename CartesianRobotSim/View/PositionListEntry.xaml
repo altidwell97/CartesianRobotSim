@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="CartesianRobotSim.MVVM.View.PositionListEntry"
+﻿<UserControl x:Class="CartesianRobotSim.View.PositionListEntry"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CartesianRobotSim.MVVM.View"
+             xmlns:local="clr-namespace:CartesianRobotSim.View"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="533">
+             d:DesignHeight="594" d:DesignWidth="528">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width ="*"/>
@@ -28,8 +28,7 @@
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="0" Grid.Column="1"
-                 Text="{Binding XPosition}" FontSize="16"
-                 Width="100" Height="25"/>
+                 Text="{Binding XPosition}"/>
 
         <!--Y-Point-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
@@ -38,8 +37,7 @@
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
-                 Text="{Binding YPosition}" FontSize="16"
-                 Width="100" Height="25"/>
+                 Text="{Binding YPosition}" />
 
         <!--Z-Point-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
@@ -48,30 +46,27 @@
                    HorizontalAlignment="Right" VerticalAlignment="Center"
                    Margin="0,0,0,0"/>
         <TextBox Grid.Row="2" Grid.Column="1"
-                 Text="{Binding ZPosition}" FontSize="16"
-                 Width="100" Height="25"/>
+                 Text="{Binding ZPosition}" />
 
         <!--AddButton-->
         <Button Grid.Row="3" Grid.Column="0"
-                Content="Add" FontSize="16" 
+                Content="Add"
+                Style="{StaticResource Button}"
                 Click="Add_Click"
-                Height="40" Width="100"
-                Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <!--RemoveButton-->
         <Button Grid.Row="3" Grid.Column="1"
-                Content="Remove" FontSize="16" 
+                Content="Remove"
+                Style="{StaticResource Button}"
                 Click="Remove_Click"
-                Height="40" Width="100"
-                Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
         <!--SaveButton-->
         <Button Grid.Row="3" Grid.Column="2"
-                Content="Save" FontSize="16" 
+                Content="Save"
+                Style="{StaticResource Button}"
                 Click="Save_Click"
-                Height="40" Width="100"
                 Margin="0,10,0,0"
                 HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
 
