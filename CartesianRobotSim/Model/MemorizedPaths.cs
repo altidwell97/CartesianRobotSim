@@ -17,5 +17,10 @@ namespace CartesianRobotSim.Model
         { 
             _memorizedPaths.Add(path);
         }
+
+        public async Task<IEnumerable<Path>> GetAllPaths()
+        {
+            return await _memorizedPaths.GetAllPaths();
+        }>
     }
 }

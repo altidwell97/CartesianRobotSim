@@ -5,11 +5,8 @@ using System.Text;
 
 namespace CartesianRobotSim.Services.JsonInteractionServices
 {
-    public class JsonPathCreator : IPathCreator
+    public interface IPathCreator
     {
-        public async Task CreatePath(Path path)
-        {
-
-        }
+        Task CreatePath(Path path);
     }
 }
