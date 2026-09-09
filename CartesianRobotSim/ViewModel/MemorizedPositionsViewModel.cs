@@ -19,5 +19,7 @@ namespace CartesianRobotSim.ViewModel
             _memorizedPositions = new ObservableCollection<VertexViewModel>();
         }
 
+
+
     }
 }

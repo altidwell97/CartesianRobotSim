@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CartesianRobotSim.Model;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 
-namespace CartesianRobotSim.Services.JsonInteractionServices
+namespace CartesianRobotSim.Services.JsonInteractionServices.PathCreator
 {
     public interface IPathCreator
     {

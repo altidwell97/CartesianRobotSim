@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
+using CartesianRobotSim.Model;
 
-namespace CartesianRobotSim.Services.JsonInteractionServices
+namespace CartesianRobotSim.Services.JsonInteractionServices.PathRemover
 {
     public class JsonPathRemover : IPathRemover
     {
@@ -11,5 +10,6 @@ namespace CartesianRobotSim.Services.JsonInteractionServices
         {
             throw new NotImplementedException();
         }
+
     }
 }

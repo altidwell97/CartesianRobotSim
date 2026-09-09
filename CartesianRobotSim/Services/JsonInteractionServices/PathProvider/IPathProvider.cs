@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CartesianRobotSim.Services.JsonInteractionServices
+namespace CartesianRobotSim.Services.JsonInteractionServices.PathProvider
 {
     public interface IPathProvider
     {

@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Path = CartesianRobotSim.Model.Path;
 
-namespace CartesianRobotSim.Services.JsonInteractionServices
+namespace CartesianRobotSim.Services.JsonInteractionServices.PathProvider
 {
     public class JsonPathProvidor : IPathProvider
     {
