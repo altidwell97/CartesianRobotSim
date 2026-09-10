@@ -13,6 +13,12 @@ namespace CartesianRobotSim.Commands
             _moveService = moveService ?? throw new ArgumentNullException(nameof(moveService));
         }
 
+        /// <summary>
+        /// Execute the command to move the robot to the specified vertex coordinates.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public override async Task ExecuteAsync(object? parameter)
         {
             double x, y, z;

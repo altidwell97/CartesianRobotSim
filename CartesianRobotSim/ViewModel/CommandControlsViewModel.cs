@@ -69,6 +69,15 @@ namespace CartesianRobotSim.ViewModel
         private readonly MoveToVertexCommand _moveToVertexCommand;
         private readonly CartesianRobotSim.Commands.CircleAxisCommand _circleAxisCommand;
 
+        /// <summary>
+        /// Initializes the MoveCommand to the moveToVertexCOmmand and the CircleCommand to thecircleAxisCommand so that the infromation from the CommandControl view
+        /// can be passed on and animated in the Robot Environment view appropriately. The MoveCommand moveToVertexCommand passes the points entered in the text boxes
+        /// to the MoveToVertexCommand classes execute function so that the movement can be animated. The circleAxisCommand passes to CircleAxisCommand class to handle 
+        /// animating circling around the desired axis in the RobotEnvironment view.
+        /// </summary>
+        /// <param name="moveToVertexCommand"></param>
+        /// <param name="circleAxisCommand"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public CommandControlsViewModel(MoveToVertexCommand moveToVertexCommand, CircleAxisCommand circleAxisCommand)
         {
             _moveToVertexCommand = moveToVertexCommand ?? throw new ArgumentNullException(nameof(moveToVertexCommand));

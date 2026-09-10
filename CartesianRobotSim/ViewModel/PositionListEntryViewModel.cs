@@ -92,6 +92,16 @@ namespace CartesianRobotSim.ViewModel
             set { _addMessage = value; OnPropertyChanged(nameof(AddMessage)); }
         }
 
+        /// <summary>
+        /// Sets the AddCommand to addVertexCommand, SaveCommand to addPathCommand, and RemoveCommand to removeVertexCommand. 
+        /// Attaches this VM to the commands so they can observe state and raise CanExecuteChanged.
+        /// addVertexCommand is used to add a vertex to the AddedPositions collection, addPathCommand is used to save the current path, 
+        /// and removeVertexCommand is used to remove a vertex from the AddedPositions collection.
+        /// </summary>
+        /// <param name="addVertexCommand"></param>
+        /// <param name="addPathCommand"></param>
+        /// <param name="removeVertexCommand"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public PositionListEntryViewModel(AddVertexCommand addVertexCommand, AddPathCommand addPathCommand, RemoveVertexCommand removeVertexCommand)
         {
             if (addVertexCommand == null) throw new ArgumentNullException(nameof(addVertexCommand));
@@ -102,7 +112,9 @@ namespace CartesianRobotSim.ViewModel
             AddCommand = addVertexCommand;
             addVertexCommand.Attach(this);
 
-            SaveCommand = new Commands.RelayCommand(_ => addPathCommand.Execute(this));
+            // Use the AddPathCommand directly so its CanExecute can disable the Save button when appropriate
+            SaveCommand = addPathCommand;
+            addPathCommand.Attach(this);
 
             RemoveCommand = removeVertexCommand;
             removeVertexCommand.Attach(this);

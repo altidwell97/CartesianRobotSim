@@ -47,10 +47,5 @@ namespace CartesianRobotSim.ViewModel
                 OnPropertyChanged(nameof(PointerZ));
             }
         }
-
-        public RobotEnvironmentViewModel()
-        {
-
-        }
     }
 }

@@ -21,6 +21,11 @@ namespace CartesianRobotSim.ViewModel
 
         public System.Collections.Generic.IList<Model.Vertex> Vertices => _path.GetPath();
 
+        /// <summary>
+        /// Formats a vertex to a standardized string of (x,y,z) with 3 decimal places.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         private static string FormatVertex(Model.Vertex v)
         {
             if (v == null) return string.Empty;

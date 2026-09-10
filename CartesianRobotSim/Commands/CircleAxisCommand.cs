@@ -14,6 +14,11 @@ namespace CartesianRobotSim.Commands
             _circleService = circleService ?? throw new ArgumentNullException(nameof(circleService));
         }
 
+        /// <summary>
+        /// Determines whether the command can execute based on the provided parameter.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanExecute(object? parameter)
         {
             // Allow execution when a CommandControlsViewModel is supplied
@@ -21,6 +26,11 @@ namespace CartesianRobotSim.Commands
             return base.CanExecute(parameter);
         }
 
+        /// <summary>
+        /// Executes the command asynchronously, animating a circle based on the selected axis and radius from the provided ViewModel.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override async Task ExecuteAsync(object? parameter)
         {
             if (parameter is not CommandControlsViewModel vm) return;

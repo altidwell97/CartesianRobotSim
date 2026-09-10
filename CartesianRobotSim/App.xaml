@@ -4,12 +4,7 @@
              xmlns:local="clr-namespace:CartesianRobotSim"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!-- Placeholder resources so XAML can reference keys at compile time. Real instances are injected at runtime in App.OnStartup. -->
         <ResourceDictionary>
-            <sys:Object x:Key="RobotEnvironmentViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
-            <sys:Object x:Key="CommandControlsViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
-            <sys:Object x:Key="ManualControlViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
-
             <Style x:Key="DirectionalButton"
                    TargetType="Button">
                 <Setter Property="FontSize"

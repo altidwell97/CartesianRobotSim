@@ -39,6 +39,13 @@ namespace CartesianRobotSim.ViewModel
         private readonly RobotEnvironmentViewModel _environment;
         private readonly MoveToVertexCommand _moveToVertexCommand;
 
+        /// <summary>
+        /// Initializes each command to move the robot in the specified direction by the specified distance.
+        /// Uses a RelayCommand to execute the MoveToVertexCommand with a new Vertex based on the current pointer position and the specified distance.
+        /// </summary>
+        /// <param name="moveToVertexCommand"></param>
+        /// <param name="environment"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public ManualControlViewModel(MoveToVertexCommand moveToVertexCommand, RobotEnvironmentViewModel environment)
         {
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));

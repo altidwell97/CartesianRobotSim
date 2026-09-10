@@ -23,6 +23,11 @@ namespace CartesianRobotSim.Stores
             _memorizedPaths = memorizedPaths;
         }
 
+        /// <summary>
+        /// Loads the memorized paths from the underlying storage and updates the in-memory list of paths. 
+        /// Raises the PathsLoaded event after loading.
+        /// </summary>
+        /// <returns></returns>
         public async Task Load()
         {
             IEnumerable<Path> paths = await _memorizedPaths.GetAllPaths();
@@ -32,6 +37,12 @@ namespace CartesianRobotSim.Stores
             PathsLoaded?.Invoke(_paths);
         }
 
+        /// <summary>
+        /// Adds a new path to the in-memory list and persists it to the underlying storage. 
+        /// Raises the PathAdded event after adding.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public async Task AddPath(Path path)
         {
             _paths.Add(path);
@@ -40,6 +51,11 @@ namespace CartesianRobotSim.Stores
             await _memorizedPaths.AddPath(path);
         }
 
+        /// <summary>
+        /// Removes a path from the in-memory list and persists the removal to the underlying storage.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public async Task RemovePath(Path path)
         {
             // Remove from in-memory list using reference equality first, then content equality

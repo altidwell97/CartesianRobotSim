@@ -2,6 +2,7 @@
 using CartesianRobotSim.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,22 +13,33 @@ namespace CartesianRobotSim.Commands
     public class AddPathCommand : AsyncCommandBase
     {
         private readonly MemorizedPathsStore _memorizedPathsStore;
+        private ViewModel.PositionListEntryViewModel? _attachedVm;
 
         public AddPathCommand(MemorizedPathsStore memorizedPathsStore)
         {
             _memorizedPathsStore = memorizedPathsStore;
         }
 
-        // Cannot execute if the path already has 5 positions
+
         public override bool CanExecute(object? parameter)
         {
-            return true;
+            // Prefer attached VM; fall back to parameter if provided
+            var vm = _attachedVm ?? parameter as ViewModel.PositionListEntryViewModel;
+            if (vm == null) return false;
+
+            return vm.AddedPositions != null && vm.AddedPositions.Count > 0;
         }
 
+        /// <summary>
+        /// Adds the current list of positions from the PositionListEntryViewModel to the MemorizedPathsStore as a new Path.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override async Task ExecuteAsync(object? parameter)
         {
-            // Expect the PositionListEntryViewModel to be passed as the command parameter
-            if (!(parameter is PositionListEntryViewModel vm)) return;
+            // Prefer attached VM; fall back to parameter if provided
+            var vm = parameter as PositionListEntryViewModel ?? _attachedVm;
+            if (vm == null) return;
 
             var added = vm.AddedPositions;
             if (added == null || added.Count == 0) return;
@@ -90,12 +102,53 @@ namespace CartesianRobotSim.Commands
             }
         }
 
+        /// <summary>
+        /// Handles the PropertyChanged event of the attached ViewModel, updating the command's enabled state when the Position property changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
+            // Position changes can affect whether saving is allowed
             if (e.PropertyName == nameof(PositionListEntryViewModel.Position))
             {
                 OnCanExecuteChanged();
             }
+        }
+
+        /// <summary>
+        /// Handles the CollectionChanged event of the attached ViewModel's AddedPositions collection, 
+        /// updating the command's enabled state when the collection changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnCanExecuteChanged();
+        }
+
+        /// <summary>
+        /// Attaches the command to a specific PositionListEntryViewModel, subscribing to its PropertyChanged 
+        /// and CollectionChanged events to update the command's enabled state.
+        /// </summary>
+        /// <param name="vm"></param>
+        public void Attach(ViewModel.PositionListEntryViewModel? vm)
+        {
+            if (_attachedVm != null)
+            {
+                _attachedVm.PropertyChanged -= OnViewModelPropertyChanged;
+                _attachedVm.AddedPositions.CollectionChanged -= OnCollectionChanged;
+            }
+
+            _attachedVm = vm;
+
+            if (_attachedVm != null)
+            {
+                _attachedVm.PropertyChanged += OnViewModelPropertyChanged;
+                _attachedVm.AddedPositions.CollectionChanged += OnCollectionChanged;
+            }
+
+            OnCanExecuteChanged();
         }
     }
 }

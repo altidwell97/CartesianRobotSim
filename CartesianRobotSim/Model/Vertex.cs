@@ -17,10 +17,14 @@ namespace CartesianRobotSim.Model
             ZValue = zValue;
         }
 
+        /// <summary>
+        /// Returns a string representation of the vertex with invariant culture and 3 decimal places.
+        /// </summary>
+        /// <returns>A string in the format "(XValue,YValue,ZValue)"</returns>
         public override string ToString()
         {
-            // Format coordinates using invariant culture
-            return $"({XValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{YValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{ZValue.ToString(System.Globalization.CultureInfo.InvariantCulture)})";
+            // Use invariant culture and 3 decimal places to match other formatting in the app
+            return $"({XValue:0.###},{YValue:0.###},{ZValue:0.###})";
         }
     }
 }

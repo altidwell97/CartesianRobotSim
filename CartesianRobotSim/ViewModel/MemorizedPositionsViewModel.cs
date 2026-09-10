@@ -27,6 +27,15 @@ namespace CartesianRobotSim.ViewModel
         private readonly MoveToVertexCommand _moveToVertexCommand;
         private readonly RemovePathCommand _removePathCommand;
 
+        /// <summary>
+        /// Initializes _memorizedPathsStore to maintain the list of paths displayed in the UI and allows it to update the list when new paths are added.
+        /// Initializes RunCommand to a RelayCommand that allows the path to be animated in the UI one point at a time using the MoveToVertexCommand.
+        /// Initializes RemovePathCommand to the DI-provided RemovePathCommand.
+        /// </summary>
+        /// <param name="memorizedPathsStore"></param>
+        /// <param name="moveToVertexCommand"></param>
+        /// <param name="removePathCommand"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public MemorizedPositionsViewModel(Stores.MemorizedPathsStore memorizedPathsStore, MoveToVertexCommand moveToVertexCommand, RemovePathCommand removePathCommand)
         {
             _memorizedPathsStore = memorizedPathsStore ?? throw new ArgumentNullException(nameof(memorizedPathsStore));
@@ -63,6 +72,11 @@ namespace CartesianRobotSim.ViewModel
             RemovePathCommand = _removePathCommand;
         }
 
+        /// <summary>
+        /// When a path is added to the store, it is added to the list of paths and updated in the UI.
+        /// If the event is raised on a non-UI thread, the update is marshaled to the UI thread using the Dispatcher.
+        /// </summary>
+        /// <param name="path"></param>
         private void OnPathAdded(Model.Path path)
         {
             var dispatcher = System.Windows.Application.Current?.Dispatcher;
@@ -82,6 +96,11 @@ namespace CartesianRobotSim.ViewModel
             }
         }
 
+        /// <summary>
+        /// When the paths are loaded from the store, the list of paths is repopulated and updated in the UI.
+        /// If the event is raised on a non-UI thread, the update is marshaled to the UI thread using the Dispatcher.
+        /// </summary>
+        /// <param name="paths"></param>
         private void OnPathsLoaded(System.Collections.Generic.IEnumerable<Model.Path> paths)
         {
             var dispatcher = System.Windows.Application.Current?.Dispatcher;
@@ -106,6 +125,9 @@ namespace CartesianRobotSim.ViewModel
             }
         }
 
+        /// <summary>
+        /// Disposes the view model by detaching event handlers from the memorized paths store.
+        /// </summary>
         public void Dispose()
         {
             try

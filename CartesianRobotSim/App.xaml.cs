@@ -13,6 +13,9 @@ namespace CartesianRobotSim
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Allows for retrieval of services and viewmodels for dependency injection.
+        /// </summary>
         private ServiceProvider? _serviceProvider;
 
         public App()
@@ -21,9 +24,14 @@ namespace CartesianRobotSim
             this.DispatcherUnhandledException += OnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += OnDomainUnhandledException;
             TaskScheduler.UnobservedTaskException += OnTaskSchedulerUnobserved;
-            // App constructor called
         }
 
+        /// <summary>
+        /// Logs unhlandled exceptions and shows a message box to the user. 
+        /// This is a last-resort handler for exceptions that were not caught anywhere else in the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             try
@@ -35,6 +43,11 @@ namespace CartesianRobotSim
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Logs unhandled exceptions from non-UI threads and shows a message box to the user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
@@ -46,6 +59,12 @@ namespace CartesianRobotSim
             catch { }
         }
 
+        /// <summary>
+        ///  Logs unobserved task exceptions and shows a message box to the user. 
+        ///  This is a last-resort handler for exceptions that were not observed in tasks.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnTaskSchedulerUnobserved(object? sender, UnobservedTaskExceptionEventArgs e)
         {
             try
@@ -71,7 +90,7 @@ namespace CartesianRobotSim
                 // App cancellation service for cooperative shutdown
                 services.AddSingleton<CartesianRobotSim.Services.AppCancellation.IAppCancellationService, CartesianRobotSim.Services.AppCancellation.AppCancellationService>();
 
-                // Services - let DI construct implementations so constructor dependencies (like cancellation) are injected
+                // Services - let DI construct implementations so constructor dependencies are injected
                 services.AddSingleton<CartesianRobotSim.Services.Move.IMoveService, CartesianRobotSim.Services.Move.MoveService>();
                 // Circle service
                 services.AddSingleton<CartesianRobotSim.Services.Circle.ICircleService, CartesianRobotSim.Services.Circle.CircleService>();
@@ -94,8 +113,6 @@ namespace CartesianRobotSim
                 services.AddSingleton<MemorizedPositionsViewModel>();
 
                 _serviceProvider = services.BuildServiceProvider();
-
-                // Legacy JSON migration removed: txt-only path storage is enforced.
 
                 // Ensure memorized paths are loaded before viewmodels read them
                 try
@@ -141,6 +158,10 @@ namespace CartesianRobotSim
             }
         }
 
+        /// <summary>
+        /// Handles application exit by signaling cancellation to cooperative services and disposing the service provider.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnExit(ExitEventArgs e)
         {
             try

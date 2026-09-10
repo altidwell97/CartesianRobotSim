@@ -15,28 +15,6 @@ namespace CartesianRobotSim.Model
         public List<Vertex> GetPath()
         {
             return _path;
-        }
-
-        public void AddVertex(Vertex vertex)
-        {
-            if (vertex == null) throw new ArgumentNullException(nameof(vertex));
-
-            // If there is a last vertex, disallow adding an identical one in sequence
-            if (_path.Count > 0)
-            {
-                var last = _path[_path.Count - 1];
-                if (last.XValue == vertex.XValue && last.YValue == vertex.YValue && last.ZValue == vertex.ZValue)
-                {
-                    throw new ArgumentException("Vertex is already the last vertex in the path.");
-                }
-            }
-
-            if (_path.Count == 5)
-            {
-                throw new InvalidOperationException("Path cannot contain more than 5 vertices.");
-            }
-
-            _path.Add(vertex);
-        }
+        }  
     }
 }

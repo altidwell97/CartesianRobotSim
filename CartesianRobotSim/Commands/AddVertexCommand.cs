@@ -12,6 +12,10 @@ namespace CartesianRobotSim.Commands
         private PositionListEntryViewModel? _attachedVm;
         private const double _epsilon = 1e-9;
 
+        /// <summary>
+        /// Attaches the command to a specific PositionListEntryViewModel instance, allowing it to listen for property changes and collection changes.
+        /// </summary>
+        /// <param name="vm"></param>
         public void Attach(PositionListEntryViewModel vm)
         {
             if (_attachedVm != null)
@@ -31,6 +35,12 @@ namespace CartesianRobotSim.Commands
             OnCanExecuteChanged();
         }
 
+        /// <summary>
+        /// When the attached ViewModel's properties change, this method checks if the X, Y, or Z values have changed
+        /// and raises the CanExecuteChanged event to update the command's enabled state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnVmPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(PositionListEntryViewModel.XValue) || e.PropertyName == nameof(PositionListEntryViewModel.YValue) || e.PropertyName == nameof(PositionListEntryViewModel.ZValue))
@@ -39,11 +49,22 @@ namespace CartesianRobotSim.Commands
             }
         }
 
+        /// <summary>
+        /// When the attached ViewModel's AddedPositions collection changes, this method raises the CanExecuteChanged event to update the command's enabled state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
         {
             OnCanExecuteChanged();
         }
 
+        /// <summary>
+        /// Determines whether the command can execute based on the state of the attached ViewModel or the provided parameter.
+
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanExecute(object? parameter)
         {
             // Prefer attached VM; fall back to parameter if provided
@@ -73,6 +94,10 @@ namespace CartesianRobotSim.Commands
             return base.CanExecute(parameter);
         }
 
+        /// <summary>
+        /// Executes the command, adding a new vertex to the attached ViewModel's AddedPositions collection.
+        /// </summary>
+        /// <param name="parameter"></param>
         public override void Execute(object? parameter)
         {
             var vm = parameter as PositionListEntryViewModel ?? _attachedVm;

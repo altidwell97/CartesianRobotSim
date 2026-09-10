@@ -15,6 +15,13 @@ namespace CartesianRobotSim.Services.Circle
             _appToken = cancellation?.Token ?? System.Threading.CancellationToken.None;
         }
 
+        /// <summary>
+        /// Takes in the axis the user wishes to draw a circle around and the radius of the circle. 
+        /// It then animates the pointer in a circular path around the specified axis with its center being where the point was when the command was started.
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
         public async Task AnimateCircleAsync(string axis, double radius)
         {
             // Use current pointer as center
@@ -55,7 +62,7 @@ namespace CartesianRobotSim.Services.Circle
 
                 if (dispatcher != null)
                 {
-                    dispatcher.InvokeAsync(() =>
+                    await dispatcher.InvokeAsync(() =>
                     {
                         _environment.PointerX = x;
                         _environment.PointerY = y;

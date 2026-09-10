@@ -18,6 +18,13 @@ namespace CartesianRobotSim.Services.Move
             _appToken = cancellation?.Token ?? System.Threading.CancellationToken.None;
         }
 
+        /// <summary>
+        /// Takes in the vertex the user would like to move to and animates the movement of the robot's pointer to that vertex over a set duration.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
         public async Task MoveToAsync(double x, double y, double z)
         {
             // Capture start values
@@ -54,7 +61,7 @@ namespace CartesianRobotSim.Services.Move
                 // Update on UI thread with Render priority to reduce layout churn and keep animation smooth
                 if (dispatcher != null)
                 {
-                    dispatcher.InvokeAsync(() =>
+                    await dispatcher.InvokeAsync(() =>
                     {
                         _environment.PointerX = nextX;
                         _environment.PointerY = nextY;

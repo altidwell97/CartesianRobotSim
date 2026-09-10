@@ -1,12 +1,13 @@
 ﻿<UserControl x:Class="CartesianRobotSim.View.ManualControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CartesianRobotSim.View"
              DataContext="{DynamicResource ManualControlViewModel}"
-             mc:Ignorable="d" 
-             d:DesignHeight="297" d:DesignWidth="528">
+             mc:Ignorable="d"
+             d:DesignHeight="297"
+             d:DesignWidth="528">
     <StackPanel Orientation="Horizontal"
                 HorizontalAlignment="Center"
                 Background="Transparent"
@@ -15,25 +16,28 @@
                 MaxHeight="300"
                 MaxWidth="533">
 
-        <StackPanel VerticalAlignment="Center" 
+        <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
             <!-- +Y -->
-            <TextBlock Grid.Row="0" Grid.Column="0" 
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
                        Text="+Y"
-                       HorizontalAlignment="Center"
-                       />
-            <Button Grid.Row="0" Grid.Column="0" 
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="0"
+                    Grid.Column="0"
                     Content="▲"
                     Command="{Binding PlusYCommand}"
                     Style="{StaticResource DirectionalButton}"
-                    Margin="0 0 0 50"/>
+                    Margin="0 0 0 50" />
 
             <!-- -Y -->
-            <TextBlock Grid.Row="2" Grid.Column="0" 
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
                        Text="-Y"
-                       HorizontalAlignment="Center"/>
-            <Button Grid.Row="2" Grid.Column="0" 
-                    Content="▼"  
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Content="▼"
                     Command="{Binding MinusYCommand}"
                     Style="{StaticResource DirectionalButton}" />
         </StackPanel>
@@ -41,45 +45,53 @@
         <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
             <!-- -Z -->
-            <TextBlock Grid.Row="1" Grid.Column="0" 
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
                        Text="-Z"
-                       HorizontalAlignment="Center"/>
-            <Button Grid.Row="1" Grid.Column="0" 
-                    Content="◀" 
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Content="◀"
                     Command="{Binding MinusZCommand}"
-                    Style="{StaticResource DirectionalButton}"/>
+                    Style="{StaticResource DirectionalButton}" />
         </StackPanel>
 
-        <StackPanel VerticalAlignment="Center" 
+        <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
             <!-- +X -->
-            <TextBlock Grid.Row="0" Grid.Column="1" 
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
                        Text="+X"
-                       HorizontalAlignment="Center"/>
-            <Button Grid.Row="0" Grid.Column="1" 
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="0"
+                    Grid.Column="1"
                     Content="▲"
                     Command="{Binding PlusXCommand}"
                     Style="{StaticResource DirectionalButton}"
-                    Margin="0 0 0 50"/>
+                    Margin="0 0 0 50" />
 
             <!-- -X -->
-            <TextBlock Grid.Row="2" Grid.Column="1" 
+            <TextBlock Grid.Row="2"
+                       Grid.Column="1"
                        Text="-X"
-                       HorizontalAlignment="Center"/>
-            <Button Grid.Row="2" Grid.Column="1" 
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="2"
+                    Grid.Column="1"
                     Content="▼"
                     Command="{Binding MinusXCommand}"
-                    Style="{StaticResource DirectionalButton}"/>
-            
+                    Style="{StaticResource DirectionalButton}" />
+
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center"
                     Margin="50 0 0 0">
             <!-- +Z -->
-            <TextBlock Grid.Row="1" Grid.Column="2" 
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
                        Text="+Z"
-                       HorizontalAlignment="Center"/>
-            <Button Grid.Row="1" Grid.Column="2" 
+                       HorizontalAlignment="Center" />
+            <Button Grid.Row="1"
+                    Grid.Column="2"
                     Content="▶"
                     Command="{Binding PlusZCommand}"
                     Style="{StaticResource DirectionalButton}" />

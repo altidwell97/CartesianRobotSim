@@ -14,6 +14,10 @@ namespace CartesianRobotSim.Services.Logging
             try { Directory.CreateDirectory(LogFolder); } catch { }
         }
 
+        /// <summary>
+        /// Formats and writes a log message to the startup log file and debug output.
+        /// </summary>
+        /// <param name="message"></param>
         public static void Log(string message)
         {
             try
@@ -25,6 +29,10 @@ namespace CartesianRobotSim.Services.Logging
             catch { }
         }
 
+        /// <summary>
+        /// Formats and writes an exception message to the startup log file and debug output.
+        /// </summary>
+        /// <param name="ex"></param>
         public static void LogException(Exception ex)
         {
             try

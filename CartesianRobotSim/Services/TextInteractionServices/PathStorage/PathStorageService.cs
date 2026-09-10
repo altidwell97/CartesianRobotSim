@@ -11,6 +11,7 @@ namespace CartesianRobotSim.Services.TextInteractionServices.PathStorage
     {
         private readonly string _filePath;
 
+
         public PathStorageService()
         {
             // Revert to previous behavior: always use LocalAppData Paths.txt for persistence.
@@ -24,12 +25,21 @@ namespace CartesianRobotSim.Services.TextInteractionServices.PathStorage
             // No debug logging here to keep startup output clean.
         }
 
+        /// <summary>
+        /// Appends a new path to the storage file asynchronously.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public async Task AppendPathAsync(CartesianRobotSim.Model.Path path)
         {
             var line = SerializePath(path);
             await File.AppendAllTextAsync(_filePath, line + Environment.NewLine).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Reads all paths from the storage file asynchronously and returns them as an enumerable collection.
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<CartesianRobotSim.Model.Path>> ReadAllPathsAsync()
         {
             var lines = await File.ReadAllLinesAsync(_filePath).ConfigureAwait(false);
@@ -42,6 +52,12 @@ namespace CartesianRobotSim.Services.TextInteractionServices.PathStorage
             return list;
         }
 
+        /// <summary>
+        /// Removes a specific path from the storage file asynchronously. 
+        /// If the path is found, it will be removed; otherwise, no action is taken.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public async Task RemovePathAsync(CartesianRobotSim.Model.Path path)
         {
             var lines = (await File.ReadAllLinesAsync(_filePath).ConfigureAwait(false)).ToList();
@@ -54,6 +70,11 @@ namespace CartesianRobotSim.Services.TextInteractionServices.PathStorage
             }
         }
 
+        /// <summary>
+        /// Serializes a Path object into a string representation suitable for storage in the file.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private string SerializePath(CartesianRobotSim.Model.Path path)
         {
             // Serialize using parentheses for vertices and ';' between vertices to match existing file format
@@ -61,6 +82,12 @@ namespace CartesianRobotSim.Services.TextInteractionServices.PathStorage
             return string.Join(";", verts.Select(v => $"({v.XValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{v.YValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{v.ZValue.ToString(System.Globalization.CultureInfo.InvariantCulture)})"));
         }
 
+        /// <summary>
+        /// Deserializes a string representation of a path back into a Path object. 
+        /// Returns null if the line is invalid or cannot be parsed.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private CartesianRobotSim.Model.Path? DeserializePath(string line)
         {
             try

@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:CartesianRobotSim"
         xmlns:views="clr-namespace:CartesianRobotSim.View"
         mc:Ignorable="d"
-        Title="Cartesian Robot Simulation" Height="891" Width="1584"
+        Title="Cartesian Robot Simulation"
+        Height="891"
+        Width="1584"
         ResizeMode="CanResizeWithGrip">
 
     <Grid>
