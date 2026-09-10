@@ -1,19 +1,19 @@
-﻿using CartesianRobotSim.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using CartesianRobotSim.Model;
+using CartesianRobotSim.Commands;
 
 namespace CartesianRobotSim.ViewModel
 {
-    public class PositionListEntryViewModel :ViewModelBase
+    public class PositionListEntryViewModel : ViewModelBase
     {
         private double _xValue;
         public double XValue
         {
-            get 
+            get
             {
-                return _xValue; 
+                return _xValue;
             }
             set
             {
@@ -53,10 +53,61 @@ namespace CartesianRobotSim.ViewModel
         public ICommand AddCommand { get; }
         public ICommand RemoveCommand { get; }
         public ICommand SaveCommand { get; }
+        // Collection bound to the ListBox in the view
+        public ObservableCollection<Vertex> AddedPositions { get; } = new ObservableCollection<Vertex>();
 
-        public PositionListEntryViewModel()
+        private Vertex? _selectedPoint;
+        public Vertex? SelectedPoint
         {
-
+            get => _selectedPoint;
+            set { _selectedPoint = value; OnPropertyChanged(nameof(SelectedPoint)); }
         }
+
+        // Expose a Position property referenced by AddPathCommand
+        private Vertex? _position;
+        public Vertex? Position
+        {
+            get => _position;
+            set { _position = value; OnPropertyChanged(nameof(Position)); }
+        }
+
+        private string? _addDisabledMessage;
+        public string? AddDisabledMessage
+        {
+            get => _addDisabledMessage;
+            set { _addDisabledMessage = value; OnPropertyChanged(nameof(AddDisabledMessage)); }
+        }
+
+        private string? _saveMessage;
+        public string? SaveMessage
+        {
+            get => _saveMessage;
+            set { _saveMessage = value; OnPropertyChanged(nameof(SaveMessage)); }
+        }
+
+        private string? _addMessage;
+        public string? AddMessage
+        {
+            get => _addMessage;
+            set { _addMessage = value; OnPropertyChanged(nameof(AddMessage)); }
+        }
+
+        public PositionListEntryViewModel(AddVertexCommand addVertexCommand, AddPathCommand addPathCommand, RemoveVertexCommand removeVertexCommand)
+        {
+            if (addVertexCommand == null) throw new ArgumentNullException(nameof(addVertexCommand));
+            if (addPathCommand == null) throw new ArgumentNullException(nameof(addPathCommand));
+            if (removeVertexCommand == null) throw new ArgumentNullException(nameof(removeVertexCommand));
+
+            // Use command instances directly; attach this VM so commands can observe state and raise CanExecuteChanged
+            AddCommand = addVertexCommand;
+            addVertexCommand.Attach(this);
+
+            SaveCommand = new Commands.RelayCommand(_ => addPathCommand.Execute(this));
+
+            RemoveCommand = removeVertexCommand;
+            removeVertexCommand.Attach(this);
+        }
+
+        // Command enable/disable logic is handled by the command classes which observe this VM.
     }
 }

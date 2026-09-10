@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace CartesianRobotSim.Commands
 {
-    public class MakeVertexCommand : CommandBase
+    public class MakeVertexCommand : AsyncCommandBase
     {
         private readonly List<Vertex> _path;
         private readonly double _xValue;
@@ -24,20 +24,21 @@ namespace CartesianRobotSim.Commands
         public override bool CanExecute(object? parameter)
         {
             int length = _path.Count();
-            if(length < 5)
+            if (length < 5)
             {
                 return true;
+            }
 
-            }
-            else
+            // If an attached VM is provided, set an inline message instead of showing a MessageBox
+            if (parameter is CartesianRobotSim.ViewModel.PositionListEntryViewModel vm)
             {
-                MessageBox.Show("Path is full. Cannot add more vertices.", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                vm.AddMessage = "Path is full. Cannot add more vertices.";
             }
+
+            return false;
         }
 
-        public override void Execute(object? parameter)
+        public override async Task ExecuteAsync(object? parameter)
         {
             Vertex vertex = new Vertex(_xValue, _yValue, _zValue);
 
@@ -45,13 +46,26 @@ namespace CartesianRobotSim.Commands
             {
                 _path.Add(vertex);
 
-                MessageBox.Show("Succsessfully added vertex to path.", "Success",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                if (parameter is CartesianRobotSim.ViewModel.PositionListEntryViewModel vm)
+                {
+                    vm.AddMessage = "Vertex added.";
+                    // Clear message after a short delay
+                    _ = System.Threading.Tasks.Task.Run(async () =>
+                    {
+                        await System.Threading.Tasks.Task.Delay(1200).ConfigureAwait(false);
+                        var disp = System.Windows.Application.Current?.Dispatcher;
+                        if (disp == null || disp.CheckAccess()) vm.AddMessage = null;
+                        else disp.Invoke(() => vm.AddMessage = null);
+                    });
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Failed to add vertex to path.", "Error",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                try { CartesianRobotSim.Services.Logging.StartupLogger.LogException(ex); } catch { }
+                if (parameter is CartesianRobotSim.ViewModel.PositionListEntryViewModel vm)
+                {
+                    vm.AddMessage = "Failed to add vertex.";
+                }
             }
         }
     }

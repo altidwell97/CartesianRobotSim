@@ -4,14 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CartesianRobotSim.View"
+             xmlns:vm="clr-namespace:CartesianRobotSim.ViewModel"
+             DataContext="{DynamicResource CommandControlsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="297" d:DesignWidth="528">
-    <Grid Background="White">
+    <Grid Background="Transparent">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width ="*"/>
-            <ColumnDefinition Width ="*"/>
-            <ColumnDefinition Width ="*"/>
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -21,36 +22,82 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <!--X-Distace-->
+        <!--X-Distance-->
         <TextBlock Grid.Row="0" Grid.Column="0" 
                    Text="X"  
-                   HorizontalAlignment="Right"/>
+                   HorizontalAlignment="center"
+                   Margin="0 0 150 0"/>
         <TextBox Grid.Row="0"
-                 Grid.Column="1"
+                 Grid.Column="0"
                  Text="{Binding XDistance}" />
 
         <!--Y-Distance-->
         <TextBlock Grid.Row="1" Grid.Column="0" 
                    Text="Y" 
-                   HorizontalAlignment="Right"/>
+                   HorizontalAlignment="center"
+                   Margin="0 0 150 0"/>
         <TextBox Grid.Row="1"
-                 Grid.Column="1"
+                 Grid.Column="0"
                  Text="{Binding YDistance}" />
 
         <!--Z-Distance-->
         <TextBlock Grid.Row="2" Grid.Column="0" 
-                   Text="Z" 
-                   HorizontalAlignment="Right"/>
+                   Text="Z"
+                   HorizontalAlignment="center"
+                   Margin="0 0 150 0" />
         <TextBox Grid.Row="2"
-                 Grid.Column="1"
+                 Grid.Column="0"
                  Text="{Binding ZDistance}" />
 
         <!--Move Button-->
-        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+        <Button Grid.Row="3" Grid.Column="0"
                 Content="Move"
                 Style="{StaticResource Button}"
                 Command="{Binding MoveCommand}"
                 HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+ 
+
+        <!--Axis dropdown-->
+        <TextBlock Grid.Row="1"
+                   Grid.Column="2"
+                   Text="Axis"
+                   HorizontalAlignment="center"
+                   Margin="0 0 150 0" />
+
+        <ComboBox Grid.Row="1"
+                  Grid.Column="2"
+                  SelectedValuePath="Tag"
+                  SelectedValue="{Binding SelectedAxis}"
+                  HorizontalAlignment="Center"
+                  Width="80">
+            <ComboBoxItem Tag="{x:Static vm:Axis.X}" Content="X" />
+            <ComboBoxItem Tag="{x:Static vm:Axis.Y}" Content="Y" />
+            <ComboBoxItem Tag="{x:Static vm:Axis.Z}" Content="Z" />
+        </ComboBox>
+        
+
+        <!-- Radius -->
+        <TextBlock Grid.Row="2"
+                   Grid.Column="2"
+                   Text="Radius"
+                   HorizontalAlignment="center"
+                   Margin="0 0 155 0" />
+        <TextBox Grid.Row="2"
+                 Grid.Column="2"
+                 Text="{Binding ZRadius}" />
+        
+
+
+        <!--Circle Button-->
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                Content="Circle"
+                Style="{StaticResource Button}"
+                Command="{Binding CircleCommand}"
+                CommandParameter="{Binding}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
 
     </Grid>
 </UserControl>

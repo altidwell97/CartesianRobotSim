@@ -9,9 +9,9 @@ namespace CartesianRobotSim.ViewModel
         private double _pointerX;
         public double PointerX
         {
-            get 
-            { 
-                return _pointerX; 
+            get
+            {
+                return _pointerX;
             }
             set
             {

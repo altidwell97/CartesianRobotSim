@@ -11,15 +11,15 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <!-- Robot Environment -->
@@ -54,10 +54,5 @@
                    Grid.Column="2">
             <views:MemorizedPositions />
         </DockPanel>
-
-
-        <!--<StackPanel Orientation="Horizontal"
-                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-        </StackPanel>-->
     </Grid>
 </Window>

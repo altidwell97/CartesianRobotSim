@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CartesianRobotSim.Model 
+namespace CartesianRobotSim.Model
 {
     public class Vertex
     {
@@ -15,6 +15,12 @@ namespace CartesianRobotSim.Model
             XValue = xValue;
             YValue = yValue;
             ZValue = zValue;
+        }
+
+        public override string ToString()
+        {
+            // Format coordinates using invariant culture
+            return $"({XValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{YValue.ToString(System.Globalization.CultureInfo.InvariantCulture)},{ZValue.ToString(System.Globalization.CultureInfo.InvariantCulture)})";
         }
     }
 }

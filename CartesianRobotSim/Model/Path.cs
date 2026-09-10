@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CartesianRobotSim.Model
 {
@@ -10,26 +9,33 @@ namespace CartesianRobotSim.Model
 
         public Path(List<Vertex> path)
         {
-            _path = path;
+            _path = path ?? throw new ArgumentNullException(nameof(path));
         }
-
 
         public List<Vertex> GetPath()
         {
             return _path;
         }
 
-       
-
-        public void AddVertex(Vertex vertex) 
+        public void AddVertex(Vertex vertex)
         {
-            if (vertex == _path.ElementAt(_path.Count - 1))
+            if (vertex == null) throw new ArgumentNullException(nameof(vertex));
+
+            // If there is a last vertex, disallow adding an identical one in sequence
+            if (_path.Count > 0)
             {
-                throw new ArgumentException("Vertex is already the last vertex in the path.");
+                var last = _path[_path.Count - 1];
+                if (last.XValue == vertex.XValue && last.YValue == vertex.YValue && last.ZValue == vertex.ZValue)
+                {
+                    throw new ArgumentException("Vertex is already the last vertex in the path.");
+                }
             }
-            if(_path.Count == 5) {
+
+            if (_path.Count == 5)
+            {
                 throw new InvalidOperationException("Path cannot contain more than 5 vertices.");
             }
+
             _path.Add(vertex);
         }
     }

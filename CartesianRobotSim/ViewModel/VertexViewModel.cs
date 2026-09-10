@@ -13,6 +13,12 @@ namespace CartesianRobotSim.ViewModel
         public double YValue => _vertex.YValue;
         public double ZValue => _vertex.ZValue;
 
+        public double X => _vertex.XValue;
+        public double Y => _vertex.YValue;
+        public double Z => _vertex.ZValue;
+
+        public string Name => _vertex.ToString();
+
         public VertexViewModel(Vertex vertex)
         {
             _vertex = vertex;

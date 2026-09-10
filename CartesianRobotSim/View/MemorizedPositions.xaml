@@ -1,4 +1,5 @@
 ﻿<UserControl x:Class="CartesianRobotSim.View.MemorizedPositions"
+             DataContext="{DynamicResource MemorizedPositionsViewModel}"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,47 +7,48 @@
              xmlns:local="clr-namespace:CartesianRobotSim.View"
              mc:Ignorable="d" 
              d:DesignHeight="297" d:DesignWidth="528">
-    <Grid Background="White">
+    <Grid Background="Transparent">
         <TextBlock Text="Memorized Positions" 
                    VerticalAlignment="Top"
                    HorizontalAlignment="Center"
                    Margin="0 0 0 10"/>
-        <!-- Memorized Positions List -->
-        <ListView ItemsSource="{Binding MemorizedPositions}"
-                  SelectedItem="{Binding SelectedPosition, Mode=TwoWay}"
-                  DisplayMemberPath="Name"
+        <!-- Memorized Paths: each row is a path, each column is a vertex formatted as (x,y,z) -->
+        <ListView ItemsSource="{Binding Paths}"
+                  SelectedItem="{Binding SelectedPath, Mode=TwoWay}"
                   Height="225"
                   Width="500"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Margin="0 0 0 10">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Point 1"
-                                    DisplayMemberBinding="{Binding Name}"
-                                    Width="100" />
-                    <GridViewColumn Header="Point 2"
-                                    DisplayMemberBinding="{Binding X}"
-                                    Width="100" />
-                    <GridViewColumn Header="Point 3"
-                                    DisplayMemberBinding="{Binding Y}"
-                                    Width="100" />
-                    <GridViewColumn Header="Point 4"
-                                    DisplayMemberBinding="{Binding Z}"
-                                    Width="100" />
-                    <GridViewColumn Header="Point 5"
-                                    DisplayMemberBinding="{Binding Z}"
-                                    Width="100" />
+            <GridView>
+                    <GridViewColumn Header="V1" DisplayMemberBinding="{Binding Vertex1}" Width="100" />
+                    <GridViewColumn Header="V2" DisplayMemberBinding="{Binding Vertex2}" Width="100" />
+                    <GridViewColumn Header="V3" DisplayMemberBinding="{Binding Vertex3}" Width="100" />
+                    <GridViewColumn Header="V4" DisplayMemberBinding="{Binding Vertex4}" Width="100" />
+                    <GridViewColumn Header="V5" DisplayMemberBinding="{Binding Vertex5}" Width="100" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <!--Run Button-->
-        <Button Content="Run"
-                Command="{Binding RunCommand}"
-                Style="{StaticResource Button}"
-                HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                Margin="0 0 0 5"/>
-        
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom" >
+            <!--Run Button-->
+            <Button Content="Run"
+                    Command="{Binding RunCommand}"
+                    Style="{StaticResource Button}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 0 5" 
+                    Height="25"/>
+            <Button Content="Remove Path"
+                    Command="{Binding RemovePathCommand}"
+                    CommandParameter="{Binding SelectedPath}"
+                    Style="{StaticResource Button}"
+                    Margin="5"
+                    Height="25"
+                    Width="120" />
+        </StackPanel>
     </Grid>
 </UserControl>

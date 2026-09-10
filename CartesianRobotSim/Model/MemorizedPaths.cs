@@ -1,5 +1,4 @@
-﻿using CartesianRobotSim.Services.JsonInteractionServices.PathCreator;
-using CartesianRobotSim.Services.JsonInteractionServices.PathProvider;
+﻿using CartesianRobotSim.Services.TextInteractionServices.PathStorage;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,23 +7,26 @@ namespace CartesianRobotSim.Model
 {
     public class MemorizedPaths
     {
-        private readonly IPathProvider _memorizedPathProvider;
-        private readonly IPathCreator _memorizedPathCreator;
+        private readonly IPathStorageService _storage;
 
-        public MemorizedPaths(IPathProvider memorizedPathProvider, IPathCreator memorizedPathCreator)
+        public MemorizedPaths(IPathStorageService storage)
         {
-            _memorizedPathProvider = memorizedPathProvider;
-            _memorizedPathCreator = memorizedPathCreator;
+            _storage = storage;
         }
 
-        public async Task AddPath(Path path) 
-        { 
-            await _memorizedPathCreator.CreatePath(path);
+        public async Task AddPath(Path path)
+        {
+            await _storage.AppendPathAsync(path).ConfigureAwait(false);
+        }
+
+        public async Task RemovePath(Path path)
+        {
+            await _storage.RemovePathAsync(path).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<Path>> GetAllPaths()
         {
-            return await _memorizedPathProvider.GetAllPaths();
+            return await _storage.ReadAllPathsAsync().ConfigureAwait(false);
         }
     }
 }

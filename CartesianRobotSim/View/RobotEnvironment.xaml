@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CartesianRobotSim.View"
+      DataContext="{DynamicResource RobotEnvironmentViewModel}"
       xmlns:helix="http://helix-toolkit.org/wpf"
       mc:Ignorable="d" 
       d:DesignHeight="594" d:DesignWidth="1056">
@@ -41,14 +42,14 @@
                                   Radius="0.08"
                                   Fill="Gray" />
             <!-- Movable 3D pointer (orange sphere). Use PointerTransform in code-behind to move it. -->
-            <helix:SphereVisual3D x:Name="Pointer"
+                    <helix:SphereVisual3D x:Name="Pointer"
                                   Radius="0.12"
                                   Fill="Orange">
                 <helix:SphereVisual3D.Transform>
                     <TranslateTransform3D x:Name="PointerTransform"
-                                          OffsetX="{Binding PointerX, ElementName=Root, Mode=TwoWay}"
-                                          OffsetY="{Binding PointerY, ElementName=Root, Mode=TwoWay}"
-                                          OffsetZ="{Binding PointerZ, ElementName=Root, Mode=TwoWay}" />
+                                          OffsetX="{Binding PointerX}"
+                                          OffsetY="{Binding PointerY}"
+                                          OffsetZ="{Binding PointerZ}" />
                 </helix:SphereVisual3D.Transform>
             </helix:SphereVisual3D>
         </helix:HelixViewport3D>

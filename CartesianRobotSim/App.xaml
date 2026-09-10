@@ -4,39 +4,46 @@
              xmlns:local="clr-namespace:CartesianRobotSim"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="DirectionalButton"
-               TargetType="Button">
-            <Setter Property="FontSize"
-                    Value="20" />
-            <Setter Property="Width"
-                    Value="40" />
-            <Setter Property="Height"
-                    Value="40" />
-        </Style>
-        <Style x:Key="Button"
-               TargetType="Button">
-            <Setter Property="FontSize"
-                    Value="16" />
-            <Setter Property="Width"
-                    Value="100" />
-            <Setter Property="Height"
-                    Value="40" />
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="FontSize"
-                    Value="16" />
-            <Setter Property="Width"
-                    Value="100" />
-            <Setter Property="Height"
-                    Value="25" />
-        </Style>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize"
-                    Value="16" />
-            <Setter Property="FontWeight"
-                    Value="Bold" />
-            <Setter Property="VerticalAlignment"
-                    Value="Center" />
-        </Style>
+        <!-- Placeholder resources so XAML can reference keys at compile time. Real instances are injected at runtime in App.OnStartup. -->
+        <ResourceDictionary>
+            <sys:Object x:Key="RobotEnvironmentViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
+            <sys:Object x:Key="CommandControlsViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
+            <sys:Object x:Key="ManualControlViewModel" xmlns:sys="clr-namespace:System;assembly=mscorlib" />
+
+            <Style x:Key="DirectionalButton"
+                   TargetType="Button">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="Width"
+                        Value="40" />
+                <Setter Property="Height"
+                        Value="40" />
+            </Style>
+            <Style x:Key="Button"
+                   TargetType="Button">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="Width"
+                        Value="100" />
+                <Setter Property="Height"
+                        Value="40" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="Width"
+                        Value="100" />
+                <Setter Property="Height"
+                        Value="25" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="FontWeight"
+                        Value="Bold" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
